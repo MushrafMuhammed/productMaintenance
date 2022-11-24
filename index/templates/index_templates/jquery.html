@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        div{
+            width: 1000px; 
+            height: 500px;
+            background-color: #0051ff; 
+            /* display: none; */
+            position: absolute;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <p id="para1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet quod dicta voluptate nulla numquam atque
+        voluptatum
+        iusto ullam dolor quisquam, libero deserunt architecto alias rerum quidem facere voluptates dolore? Sunt.</p> -->
+    
+        <!-- Calculator -->
+        <!-- <label for="">First Number :</label>
+    <input type="text" id="num1">
+    <label for="">Second Number</label>
+    <input type="text" id="num2"> -->
+    <button id="slideDown"> ADD</button>
+    <button id="slideup"> up</button>
+    <button id="po_btn"> position</button>
+    <button id="add_btn"> ADD</button>
+
+    <!-- Div  -->
+    <!-- <div id="div1"></div> -->
+    <div></div>
+
+    <p ></p>
+
+
+    <script>
+        $(document).ready(function () {
+            // var p1 = $('para1').html()
+            // console.log(p1)
+
+            // $('#para1').html('hai')
+
+            // ------calculation
+
+            $('#po_btn').click(function () {
+                $('div').animate({
+                    'left': '200px',
+                })
+                .delay(2000)
+                .animate({
+                    'top':'200px',
+                })
+                .animate({
+                    'left':'-200px',
+                })
+                .delay(1000)
+                .animate({
+                    'top':'-200px'
+                })
+
+                // $('div').show(1000)
+                // $('div').toggle(1000)
+                // $('div').fadeOut(1000)
+                // $('div').slideDown(1000)
+                
+
+                // var num1 = $('num1').val()
+                // var num2 = $('num2').val()
+                // var sum = num1 + num2
+                // var result = $('result_box')
+                // $('p').html = sum
+            })
+
+
+
+
+
+        })
+    </script>
+</body>
+
+</html>

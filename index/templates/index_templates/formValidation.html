@@ -1,0 +1,234 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <!-- <style>
+        body{
+            background-image: url('../images/news_img.jpg');
+        }
+    </style> -->
+</head>
+
+<body style="background-color: rgb(99, 230, 180);">
+    <h1
+        style="text-align: center; margin-top: 30px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+        Dev Summit Registration </h1>
+    <div style="width: 50%; margin-left: auto; margin-right: auto;  padding-top: 35px;">
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label"> Name</label>
+            <div class="col-sm-10">
+                <input type="email" class="form-control" id="nameField" placeholder="Full name">
+                <span id="error_name" style="color: red;"></span>
+            </div>
+        </div><br>
+        <fieldset class="form-group">
+            <div class="row">
+                <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
+                <div class="col-sm-10">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gridRadios" id="male" value="option1">
+                        <label class="form-check-label" for="gridRadios1">
+                            Male
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gridRadios" id="female" value="option2">
+                        <label class="form-check-label" for="gridRadios2">
+                            Female
+                        </label>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </fieldset>
+        <span id="span_gender" style="color: red;"></span>
+
+        <div class="form-group row">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Address</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" id="addressField" placeholder="Permanent address" rows="3"
+                    style="margin-bottom: 20px;"></textarea>
+                <span id="span_address" style="color: red;"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+                <input type="email" class="form-control" id="emailField" placeholder="Mail Id"><br>
+                <span id="span_email" style="color: red;"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Mobile No</label>
+            <div class="col-sm-10">
+                <input type="number" class="form-control" id="mobileField" placeholder="+91 "><br>
+                <span id="span_mobile" style="color: red;"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Username</label>
+            <div class="col-sm-10">
+                <input type="email" class="form-control" id="usernameField" placeholder="Student Id"><br>
+                <span id="span_username" style="color: red;"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" id="passwordField" placeholder="*********"><br>
+                <span id="span_password" style="color: red;"></span>
+            </div>
+        </div>
+        <div style="margin-left: 80%;">
+            <div class="col-sm-10" style="width: 90%">
+                <button type="submit" class="btn btn-primary" style="width: 100%; align-content: center;"
+                    onclick=" return validate()">submit</button>
+            </div>
+        </div>
+    </div><br><br>
+
+
+    <script>
+        var c_name = document.getElementById('nameField')
+        var c_genderM = document.getElementById('male')
+        var c_genderF = document.getElementById('female')
+        var c_address = document.getElementById('addressField')
+        var c_email = document.getElementById('emailField')
+        var c_mobileno = document.getElementById('mobileField')
+        var c_username = document.getElementById('usernameField')
+        var c_password = document.getElementById('passwordField')
+
+        var span_error = document.getElementById('fname_error')
+
+        function validate() {
+            // validation for it's filled
+            // if (c_name.value == '' || c_address.value == '' || c_email.value == '' || c_mobileno.value == '' || c_username.value == '' || c_password.value == '') {
+            //     alert('please fill all fields')
+            //     return false
+            // }
+
+            var span_name = document.getElementById('error_name')
+            if (c_name.value == '') {
+                // alert('please fill all fields')
+                nameField.style.border = '1px solid red'
+                span_name.innerHTML = 'please fill the field'
+                return false
+            }
+            else {
+                span_name.innerHTML = ''
+
+            }
+
+            var span_gender = document.getElementById('span_gender')
+            if (c_genderM.checked == false && c_genderF.checked == false) {
+                // alert('please choose a gender')
+                span_gender.innerHTML = 'please choose a gender'
+                return false
+            }
+            else {
+                span_gender.innerHTML = ''
+
+            }
+
+            var span_address = document.getElementById('span_address')
+            if (c_address.value == '') {
+                // alert('please fill all fields')
+                addressField.style.border = '1px solid red'
+                span_address.innerHTML = 'please fill the field'
+                return false
+            }
+            else {
+                addressField.style.border = ''
+                span_address.innerHTML = ''
+
+            }
+
+            var span_email = document.getElementById('span_email')
+            if (c_email.value == '') {
+                // alert('please fill all fields')
+                emailField.style.border = '1px solid red'
+                span_email.innerHTML = 'please fill the field'
+
+                return false
+            }
+            else {
+                emailField.style.border = ''
+                span_email.innerHTML = ''
+
+            }
+
+            var span_mobile = document.getElementById('span_mobile')
+            if (c_mobileno.value == '') {
+                // alert('please fill all fields')
+                mobileField.style.border = '1px solid red'
+                span_mobile.innerHTML = 'please fill the field'
+                return false
+            }
+            else {
+                mobileField.style.border = ''
+                span_mobile.innerHTML = ''
+
+            }
+
+            var span_username = document.getElementById('span_username')
+            if (c_username.value == '') {
+                // alert('please fill all fields')
+                usernameField.style.border = '1px solid red'
+                span_username.innerHTML = 'please fill the field'
+                return false
+            }
+            else {
+                usernameField.style.border = ''
+                span_username.innerHTML = ''
+
+            }
+            var span_password = document.getElementById('span_password')
+            if (c_password.value == '') {
+                // alert('please fill all fields')
+                passwordField.style.border = '1px solid red'
+                span_password.innerHTML = 'please fill the field'
+
+                return false
+            }
+            else {
+                if (c_password.value.length <= 8) {
+                    passwordField.style.border = '1px solid red'
+                    span_password.innerHTML = 'password should be 8 characters'
+                    return false
+                }
+                passwordField.style.border = ''
+                span_password.innerHTML = ''
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+            // // Clear textFields afer submit
+            // c_name.value = ""
+            // c_address.value = ""
+            // c_email.value = ""
+            // c_mobileno.value = ""
+            // c_username.value = ""
+            // c_password.value = ""
+        }
+
+    </script>
+</body>
+
+</html>

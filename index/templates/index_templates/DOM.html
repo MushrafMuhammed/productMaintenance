@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+
+<body>
+    <!-- <p id="lorem">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta vero vel maiores facere omnis porro
+        similique
+        explicabo odio eveniet, voluptates quis, molestias commodi veritatis ut minima cupiditate sunt voluptate ullam.
+    </p>
+    <button ondblclick="fontChanged()">Click</button>
+
+    <script>
+        function fontChanged() {
+            document.getElementById('lorem').style.color = 'red'
+            document.getElementById('lorem').style.fontSize = '25'
+            // console.log(document)
+            document.getElementById('lorem').innerHTML = 'You are changed! '
+        }
+
+    </script> -->
+
+    <!-- Calculator -->
+    <!-- 
+    <input id="num1" type="text"><br><br>
+    <select name="" id="option">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select><br><br>
+    <input id="num2" type="text"><br><br>
+    <button onclick="add()">ADD</button><br><br>
+
+    <span id="result"></span> -->
+
+    <script>
+        // calculator
+        // function add() {
+        //     let num1 = parseInt(document.getElementById('num1').value)
+        //     let num2 = parseInt(document.getElementById('num2').value)
+        //     var op = document.getElementById('option').value
+        //     // sum = num1 + num2
+        //     // alert(sum)
+
+
+        //     if (op == '+') {
+        //         sum = num1 + num2
+
+        //     }
+        //     else if (op == '-') {
+        //         sum = num1 - num2
+        //     }
+        //     else if (op == '*') {
+        //         sum = num1 * num2
+
+        //     }
+        //     else if (op == '/') {
+        //         sum = num1 / num2
+
+        //     }
+        //     if (sum < 50) {
+        //         document.getElementById('result').style.color = 'red'
+        //     }
+        //     else {
+        //         document.getElementById('result').style.color = 'green'
+        //     }
+        //     document.getElementById('result').innerHTML = sum
+
+        // }
+    </script>
+
+    <!--  Hidden password HTML -->
+
+    <!-- <label for="pass">Password</label><br>
+    <input type="password" id="pass-value">
+    <input type="checkbox" id="click" onchange="display()"> -->
+
+
+    <script>
+        // -------- Hidden Password
+
+        // function display() {
+
+        //     var text = document.getElementById('pass-value')
+
+
+        //     if (text.type == 'text') {
+
+        //         text.type = 'password'
+        //     }
+        //     else {
+        //         text.type = 'text'
+        //     }
+        // }
+
+    </script>
+
+
+    <label>Course:</label>
+    <input type="text" id="course_value"><br><br>
+    <button id="add-course" onclick="add()">Display list</button>
+    <button onclick="reset()">Reset</button>
+
+    <ol id="output">
+
+    </ol>
+
+
+    <script>
+
+        // -------calculation ()
+        function add() {
+
+            let course = document.getElementById('course_value').value // ----variable declaration            
+            document.getElementById('output').innerHTML += '<li>' + course + '</li>' // -----create a new li tag
+        }
+
+        // ------OL reset ()
+        function reset() {
+            element = document.getElementById('output')
+            element.parentNode.removeChild(element)
+        }
+    </script>
+
+
+
+
+    <!-- Reference from stackOverFlow-->
+    <!-- https://stackoverflow.com/questions/69839977/how-to-take-text-value-and-add-it-to-list-by-clicking-submit-button-using-dom -->
+</body>
+
+</html>

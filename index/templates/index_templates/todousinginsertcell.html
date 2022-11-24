@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo_insertcell()</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+
+<body>
+    <div style="width: 50%; margin-left: auto; margin-right: auto; padding-top: 50px;">
+        <div class="form-group">
+            <h1 style="text-align: center ;">ToDo List_2</h1>
+            <label for="exampleInputEmail1">Task</label>
+            <input type="email" class="form-control" id="taskField" aria-describedby="emailHelp"
+                placeholder="Enter your Task"><br>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Description</label>
+            <input type=" " class="form-control" id="desField" placeholder="Description...">
+        </div><br>
+        <button type="submit" class="btn btn-success" style=" width: 100%;" onclick="addTask()">Submit</button>
+    </div><br><br>
+
+    <h1 style="text-align: center ;">Task Status List</h1>
+
+    <table style="width: 90%; margin-left: auto; margin-right: auto; border:1px black solid ;" id="todo_tb">
+        <thead class="table" id="tb">
+            <tr>
+                <th scope="col">SL.NO</th>
+                <th scope="col">Task</th>
+                <th scope="col">Description</th>
+                <th scope="col">Date</th>
+                <th scope="col">Status</th>
+                <th scope="col">Completion Date</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+    </table>
+
+    <script>
+        function addTask() {
+
+            var table = document.getElementById('td')
+            var task = document.getElementById('taskField')
+            var description = document.getElementById('desField')
+            
+            var i = 1
+
+            const dt = new Date()
+            const current_date = dt.getDay() + '/' + dt.getMonth() + '/' + dt.getFullYear()
+
+
+            var row = table.insertRow()
+            var cell1 = row.insertcell(0)
+            var cell2 = row.insertcell(1)
+            var cell3 = row.insertcell(2)
+            var cell4 = row.insertcell(3)
+            var cell5 = row.insertcell(4)
+            var cell6 = row.insertcell(5)
+            var cell7 = row.insertcell(6)
+
+            cell1 = i
+            i++
+            cell2.innerHTML = task
+            cell3.innerHTML = description
+            cell4.innerHTML = current_date
+            cell5.innerHTML = 'pendding'
+            cell6.innerHTML = current_date
+
+            var btn = document.createElement("button")
+            btn.innerHTML = 'Not Completed'
+            btn.onclick = function addStatus() {
+                cell5 = 'Finished'
+                cell6 = current_date
+                btn.innerHTML = 'Completed'
+            }
+            
+
+            cell7.appendChild(btn)
+        }
+    </script>
+
+
+</body>
+
+</html>
