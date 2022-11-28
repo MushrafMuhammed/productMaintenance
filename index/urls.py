@@ -11,5 +11,7 @@ urlpatterns = [
     path('productList', views.productListfun, name='productList'),
     path('jquery', views.jqueryfun, name='jquery'),
     path('jquery2', views.jquery2fun, name='jquery2'),
-    path('form', views.formfun, name='formValidation')
+    path('form', views.formfun, name='formValidation'),
+    path('list', views.listfun, name='list'),
+    path('array', views.arrayfun, name='array')
 ]

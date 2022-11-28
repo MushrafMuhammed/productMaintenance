@@ -30,5 +30,10 @@ def jquery2fun(request):
 
 def formfun(request):
     return render(request, 'index_templates/formValidation.html')
+
+def listfun(request):
+    return render(request, 'index_templates/list.html')
    
+def arrayfun(request):
+    return render(request, 'index_templates/array.html')
 # Create your views here.

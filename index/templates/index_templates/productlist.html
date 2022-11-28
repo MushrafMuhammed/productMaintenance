@@ -39,7 +39,7 @@
     </style>
 </head>
 
-<body style="background-color: rgb(219, 209, 209);">
+<body style="background-color: rgb(183, 255, 231);">
 
     <!-- product insert form -->
     <h1 style="text-align: center; margin-top: 20px;">Product List</h1>
@@ -58,17 +58,18 @@
             </div>
         </div>
         <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Current Stock</label>
-            <div class="col-sm-10">
-                <input type="number" class="form-control" id="stockField" placeholder="Count"><br>
-            </div>
-        </div>
-        <div class="form-group row">
             <label for="inputEmail3" class="col-sm-2 col-form-label">Price</label>
             <div class="col-sm-10">
                 <input type="number" class="form-control" id="pricefield" placeholder="₹"><br>
             </div>
         </div>
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Current Stock</label>
+            <div class="col-sm-10">
+                <input type="number" class="form-control" id="stockField" placeholder="Count"><br>
+            </div>
+        </div>
+
         <div class="">
             <div class="col-sm-10" style="width: 100%">
                 <button type="submit" class="btn btn-primary" style="width: 100%; align-content: center;"
@@ -80,7 +81,7 @@
     <!-- Dashboard TB -->
     <h1 style="text-align: center; margin-top: 20px; color: #000000; ">Product Dashboard</h1>
     <table style="width: 90%; margin-left: auto; margin-right: auto; border: 2px black solid ;" id="pd_table">
-        <tr class="table-light">
+        <tr class="thead-dark">
             <th>S.No</th>
             <th>Product ID</th>
             <th>Product Name</th>
@@ -92,43 +93,46 @@
     </table>
 
     <!-- MODAL -->
-    <div id='myModal' class="model">
-        <div class="modal-content">
-            <h3 style="text-align: center; margin-top: 20px; color: rgb(180, 3, 3);">Update your Product Stock</h3>
-            <span class="close">&times;</span>
-            <div style="width: 50%; margin-left: auto; margin-right: auto; ">
-                <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">Product Id</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="idField" placeholder="Description"><br>
-                    </div>
+    <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Update Stock List</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closemodal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-                <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">Product Name</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" id="u_nameField" placeholder="Product"><br>
-                    </div>
-                </div>
+                <div class="modal-body">
 
-                <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">Current Stock</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" id="u_currentField" placeholder=""><br>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Product Id</label>
+                        <input type="text" class="form-control" id="idField">
+
                     </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">New Stock</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" id="newStockfield" placeholder=""><br>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Product Name</label>
+                        <input type="text" class="form-control" id="u_nameField">
+
                     </div>
-                </div>
-                <div class="">
-                    <div class="col-sm-10" style="width: 100%">
-                        <button type="submit" class="btn btn-primary" style="width: 100%; align-content: center;"
-                            onclick="updateStock()">Update Stock</button>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Current Stock</label>
+                        <input type="text" class="form-control" id="u_currentField">
                     </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">New Stock</label>
+                        <input type="text" class="form-control" id="newStockfield">
+                    </div>
+
+                    <input type="text" class="form-control" id="hiddenStockfield" hidden>
+
+
                 </div>
-            </div><br><br>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" style="width: 100%; align-content: center;"
+                        onclick="return updateStock()" id="btn_updatestock">Update Stock</button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -157,6 +161,11 @@
             // element creation
             new_row = document.createElement('tr')
             sno++
+            // create unique id to rows
+            var row_no = 'row' + sno
+            new_row.setAttribute('id', row_no)
+
+
             td_sno = document.createElement('td')
             td_id = document.createElement('td')
             td_name = document.createElement('td')
@@ -181,10 +190,10 @@
             td_id.innerHTML = "PRO0" + sno + id_date
             td_name.innerHTML = p_name.value
             td_des.innerHTML = p_des.value
-            td_price.innerHTML = p_stock.value
+            td_price.innerHTML = p_price.value
             td_stock.innerHTML = p_stock.value
             td_delete.innerHTML = "<button class='btn_delete' onclick='delete_row()'>Delete</button>"
-            td_edit.innerHTML = "<button class='btn_edit' onclick='edit_row()'>Edit</button>"
+            td_edit.innerHTML = "<button class='btn_edit' onclick='edit_row()' data-toggle='modal' data-target='#exampleModal'> Edit </button>"
 
             pd_table.appendChild(new_row) // append new row to table
 
@@ -203,10 +212,7 @@
 
         // edit product stock ()
         function edit_row() {
-            console.log('hi')
-            // var u_name = document.getElementById('u_nameField')
-            var modal = document.getElementById('myModal')
-            myModal.style.visibility = 'visible' // Modal Div go to visible
+
             var selected_row = event.target.parentNode.parentNode //Call the specified row 
             var children = selected_row.childNodes // call childNodes(tdies)
 
@@ -214,8 +220,10 @@
             var u_id = document.getElementById('idField')
             var u_name = document.getElementById('u_nameField')
             var u_current = document.getElementById('u_currentField')
-            var u_price = document.getElementById('pricefield')
-            var p_stock = document.getElementById('stockField')
+            var u_newstock = document.getElementById('newStockfield')
+            var hiddenvalue = document.getElementById('hiddenStockfield')
+
+            hiddenvalue.value = selected_row.id
 
             // asign datas to modal input box
             u_id.value = children[1].innerHTML
@@ -226,20 +234,42 @@
             u_id.readOnly = true
             u_name.readOnly = true
             u_current.readOnly = true
+            var newStock = document.getElementById('newStockfield')
+
+            newStock.value= ''
 
         }
 
         // update stock count ()
         function updateStock() {
-            var forupdaterow = event.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode
-            var children = forupdaterow.childNodes
-            var new_stock = document.getElementById('newStockfield')
-            children[5].innerHTML = new_stock.value
+
+            var id = document.getElementById('hiddenStockfield').value
+            var newStock = document.getElementById('newStockfield').value
+            var oldstock = document.getElementById('u_currentField').value
+            var updatedStock = parseInt(oldstock) + parseInt(newStock)
+            td_list = document.getElementById(id).childNodes
+
+            td_list[5].innerHTML = updatedStock
+           
+        var close = 'modal'
+        document.getElementById('btn_updatestock').setAttribute('data-dismiss',close) 
+        
+
         }
 
 
 
+
     </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
